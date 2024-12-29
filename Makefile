@@ -68,7 +68,7 @@ uninstall:
 
 release: geosite.dat geoip.dat geoip-only-cn-private.dat darwin-amd64.zip darwin-arm64.zip linux-386.zip linux-amd64.zip \
 	linux-arm.zip linux-armv5.zip linux-armv6.zip linux-armv7.zip linux-armv8.zip \
-	linux-mips-softfloat.zip linux-mips-hardfloat.zip linux-mipsle-softfloat.zip linux-mipsle-hardfloat.zip \
+	linux-mips-softfloat.zip linux-mips-hardfloat.zip linux-mipsle-softfloat.zip linux-mipsle-softfloat-nat.zip linux-mipsle-hardfloat.zip \
 	linux-mips64.zip linux-mips64le.zip freebsd-386.zip freebsd-amd64.zip \
 	windows-386.zip windows-amd64.zip windows-arm.zip windows-armv6.zip windows-armv7.zip windows-arm64.zip
 
@@ -118,6 +118,11 @@ linux-mips-hardfloat:
 
 linux-mipsle-softfloat: TAGS = client
 linux-mipsle-softfloat:
+	mkdir -p $(BUILD_DIR)/$@
+	GOARCH=mipsle GOMIPS=softfloat GOOS=linux $(GOBUILD)/$@
+
+linux-mipsle-softfloat-nat: TAGS = nat
+linux-mipsle-softfloat-nat:
 	mkdir -p $(BUILD_DIR)/$@
 	GOARCH=mipsle GOMIPS=softfloat GOOS=linux $(GOBUILD)/$@
 
