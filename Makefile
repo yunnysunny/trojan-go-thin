@@ -6,7 +6,7 @@ COMMIT := `git rev-parse HEAD`
 PLATFORM := linux
 BUILD_DIR := build
 VAR_SETTING := -X $(PACKAGE_NAME)/constant.Version=$(VERSION) -X $(PACKAGE_NAME)/constant.Commit=$(COMMIT)
-TAGS = full
+TAGS = client nat
 GOBUILD = env CGO_ENABLED=0 $(GO_DIR)go build -tags "$(TAGS)" -trimpath -ldflags="-s -w -buildid= $(VAR_SETTING)" -o $(BUILD_DIR)
 
 .PHONY: trojan-go release test

@@ -3,7 +3,7 @@ package simplesocks
 import (
 	"context"
 
-	"github.com/p4gefau1t/trojan-go/tunnel"
+	"github.com/p4gefau1t/trojan-go-thin/tunnel"
 )
 
 const Name = "SIMPLESOCKS"

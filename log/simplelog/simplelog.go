@@ -5,7 +5,7 @@ import (
 	golog "log"
 	"os"
 
-	"github.com/p4gefau1t/trojan-go/log"
+	"github.com/p4gefau1t/trojan-go-thin/log"
 )
 
 func init() {

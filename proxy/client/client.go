@@ -3,19 +3,17 @@ package client
 import (
 	"context"
 
-	"github.com/p4gefau1t/trojan-go/config"
-	"github.com/p4gefau1t/trojan-go/proxy"
-	"github.com/p4gefau1t/trojan-go/tunnel/adapter"
-	"github.com/p4gefau1t/trojan-go/tunnel/http"
-	"github.com/p4gefau1t/trojan-go/tunnel/mux"
-	"github.com/p4gefau1t/trojan-go/tunnel/router"
-	"github.com/p4gefau1t/trojan-go/tunnel/shadowsocks"
-	"github.com/p4gefau1t/trojan-go/tunnel/simplesocks"
-	"github.com/p4gefau1t/trojan-go/tunnel/socks"
-	"github.com/p4gefau1t/trojan-go/tunnel/tls"
-	"github.com/p4gefau1t/trojan-go/tunnel/transport"
-	"github.com/p4gefau1t/trojan-go/tunnel/trojan"
-	"github.com/p4gefau1t/trojan-go/tunnel/websocket"
+	"github.com/p4gefau1t/trojan-go-thin/config"
+	"github.com/p4gefau1t/trojan-go-thin/proxy"
+	"github.com/p4gefau1t/trojan-go-thin/tunnel/adapter"
+	"github.com/p4gefau1t/trojan-go-thin/tunnel/http"
+	"github.com/p4gefau1t/trojan-go-thin/tunnel/mux"
+	"github.com/p4gefau1t/trojan-go-thin/tunnel/simplesocks"
+	"github.com/p4gefau1t/trojan-go-thin/tunnel/socks"
+	"github.com/p4gefau1t/trojan-go-thin/tunnel/tls"
+	"github.com/p4gefau1t/trojan-go-thin/tunnel/transport"
+	"github.com/p4gefau1t/trojan-go-thin/tunnel/trojan"
+	"github.com/p4gefau1t/trojan-go-thin/tunnel/websocket"
 )
 
 const Name = "CLIENT"
@@ -29,16 +27,12 @@ func GenerateClientTree(transportPlugin bool, muxEnabled bool, wsEnabled bool, s
 	if wsEnabled {
 		clientStack = append(clientStack, websocket.Name)
 	}
-	if ssEnabled {
-		clientStack = append(clientStack, shadowsocks.Name)
-	}
+
 	clientStack = append(clientStack, trojan.Name)
 	if muxEnabled {
 		clientStack = append(clientStack, []string{mux.Name, simplesocks.Name}...)
 	}
-	if routerEnabled {
-		clientStack = append(clientStack, router.Name)
-	}
+
 	return clientStack
 }
 

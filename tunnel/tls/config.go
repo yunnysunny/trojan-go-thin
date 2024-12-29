@@ -1,7 +1,7 @@
 package tls
 
 import (
-	"github.com/p4gefau1t/trojan-go/config"
+	"github.com/p4gefau1t/trojan-go-thin/config"
 )
 
 type Config struct {

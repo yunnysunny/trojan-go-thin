@@ -7,16 +7,14 @@ import (
 	"net"
 	"sync/atomic"
 
-	"github.com/p4gefau1t/trojan-go/api"
-	"github.com/p4gefau1t/trojan-go/common"
-	"github.com/p4gefau1t/trojan-go/config"
-	"github.com/p4gefau1t/trojan-go/log"
-	"github.com/p4gefau1t/trojan-go/redirector"
-	"github.com/p4gefau1t/trojan-go/statistic"
-	"github.com/p4gefau1t/trojan-go/statistic/memory"
-	"github.com/p4gefau1t/trojan-go/statistic/mysql"
-	"github.com/p4gefau1t/trojan-go/tunnel"
-	"github.com/p4gefau1t/trojan-go/tunnel/mux"
+	"github.com/p4gefau1t/trojan-go-thin/common"
+	"github.com/p4gefau1t/trojan-go-thin/config"
+	"github.com/p4gefau1t/trojan-go-thin/log"
+	"github.com/p4gefau1t/trojan-go-thin/redirector"
+	"github.com/p4gefau1t/trojan-go-thin/statistic"
+	"github.com/p4gefau1t/trojan-go-thin/statistic/memory"
+	"github.com/p4gefau1t/trojan-go-thin/tunnel"
+	"github.com/p4gefau1t/trojan-go-thin/tunnel/mux"
 )
 
 // InboundConn is a trojan inbound connection
@@ -217,13 +215,13 @@ func NewServer(ctx context.Context, underlay tunnel.Server) (*Server, error) {
 	// TODO replace this dirty code
 	var auth statistic.Authenticator
 	var err error
-	if cfg.MySQL.Enabled {
-		log.Debug("mysql enabled")
-		auth, err = statistic.NewAuthenticator(ctx, mysql.Name)
-	} else {
-		log.Debug("auth by config file")
-		auth, err = statistic.NewAuthenticator(ctx, memory.Name)
-	}
+	// if cfg.MySQL.Enabled {
+	// 	log.Debug("mysql enabled")
+	// 	auth, err = statistic.NewAuthenticator(ctx, mysql.Name)
+	// } else {
+	log.Debug("auth by config file")
+	auth, err = statistic.NewAuthenticator(ctx, memory.Name)
+	// }
 	if err != nil {
 		cancel()
 		return nil, common.NewError("trojan failed to create authenticator")

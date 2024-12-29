@@ -1,6 +1,6 @@
 package websocket
 
-import "github.com/p4gefau1t/trojan-go/config"
+import "github.com/p4gefau1t/trojan-go-thin/config"
 
 type WebsocketConfig struct {
 	Enabled bool   `json:"enabled" yaml:"enabled"`
