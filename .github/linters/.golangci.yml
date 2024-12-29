@@ -41,3 +41,6 @@ linters-settings:
     local-prefixes: github.com/p4gefau1t/trojan-go-thin
   goimports:
     local-prefixes: github.com/p4gefau1t/trojan-go-thin
+  depguard:
+    list-type: blacklist
+    packages: [] # 清空限制的包
