@@ -9,7 +9,6 @@ import (
 	"time"
 
 	"github.com/p4gefau1t/trojan-go-thin/common"
-	"github.com/p4gefau1t/trojan-go-thin/config"
 	"github.com/p4gefau1t/trojan-go-thin/log"
 	"github.com/p4gefau1t/trojan-go-thin/statistic"
 	"github.com/p4gefau1t/trojan-go-thin/statistic/memory"
@@ -161,7 +160,7 @@ func NewClient(ctx context.Context, client tunnel.Client) (*Client, error) {
 		return nil, err
 	}
 
-	cfg := config.FromContext(ctx, Name).(*Config)
+	// cfg := config.FromContext(ctx, Name).(*Config)
 	// if cfg.API.Enabled {
 	// 	go api.RunService(ctx, Name+"_CLIENT", auth)
 	// }

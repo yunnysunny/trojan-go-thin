@@ -227,9 +227,9 @@ func NewServer(ctx context.Context, underlay tunnel.Server) (*Server, error) {
 		return nil, common.NewError("trojan failed to create authenticator")
 	}
 
-	if cfg.API.Enabled {
-		go api.RunService(ctx, Name+"_SERVER", auth)
-	}
+	// if cfg.API.Enabled {
+	// 	go api.RunService(ctx, Name+"_SERVER", auth)
+	// }
 
 	redirAddr := tunnel.NewAddressFromHostPort("tcp", cfg.RemoteHost, cfg.RemotePort)
 	s := &Server{
