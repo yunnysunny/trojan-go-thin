@@ -61,6 +61,7 @@ uninstall:
 	rm /usr/bin/geosite.dat
 
 %.zip: % geosite.dat geoip.dat geoip-only-cn-private.dat
+	ls -lh $(BUILD_DIR)/$<
 	@zip -du $(NAME)-$@ -j $(BUILD_DIR)/$</*
 	@zip -du $(NAME)-$@ example/*
 	@-zip -du $(NAME)-$@ *.dat
